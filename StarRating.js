@@ -11,3 +11,5 @@ export class StarRating extends HTMLElement {
     this.shadowRoot.appendChild(content);
   }
 }
+
+window.customElements.define('star-rating', StarRating);
