@@ -7,7 +7,7 @@ button {
   border: none;
   background: none;
   padding: 0;
-  color: #c1bfbd;
+  color: var(--star-rating-disabled-color, #c1bfbd);
   cursor: pointer;
 }
 
@@ -16,5 +16,5 @@ button:focus {
 }
 
 .selected {
-  color: #f4a810;
+  color: var(--star-rating-enabled-color, #f4a810);
 }
