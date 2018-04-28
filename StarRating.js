@@ -1,9 +1,11 @@
 import { starRatingTemplate } from './starRatingTemplate.js';
+import { getElementIndex } from './helpers.js';
 
 export class StarRating extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.handleClick = this.handleClick.bind(this);
   }
 
   static get observedAttributes() {
@@ -19,7 +21,13 @@ export class StarRating extends HTMLElement {
   connectedCallback() {
     const content = starRatingTemplate.content.cloneNode(true);
     this.shadowRoot.appendChild(content);
+    this.shadowRoot.addEventListener('click', this.handleClick);
     this.buttons = this.shadowRoot.querySelectorAll('button');
+  }
+
+  handleClick(evt) {
+    const clickedRate = getElementIndex(evt.target) + 1;
+    this.setAttribute('rate', clickedRate);
   }
 
   updateStars(rate) {
