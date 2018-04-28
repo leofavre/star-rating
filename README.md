@@ -1,2 +1,2 @@
-# star-rating
-A simple Star Rating web component
+# Star Rating
+A vanilla Javascript Star Rating web component for demonstration purposes only.
