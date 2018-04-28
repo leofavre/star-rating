@@ -6,6 +6,16 @@ export class StarRating extends HTMLElement {
     this.attachShadow({ mode: 'open' });
   }
 
+  static get observedAttributes() {
+    return ['rate'];
+  }
+
+  attributeChangedCallback(attrName, oldValue, newValue) {
+    if (attrName === 'rate' && oldValue !== newValue) {
+      this.updateStars(Number(newValue));
+    }
+  }
+
   connectedCallback() {
     const content = starRatingTemplate.content.cloneNode(true);
     this.shadowRoot.appendChild(content);
