@@ -8,6 +8,14 @@ export class StarRating extends HTMLElement {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  get rate() {
+    return Number(this.getAttribute('rate'));
+  }
+
+  set rate(value) {
+    this.setAttribute('rate', value);
+  }
+
   static get observedAttributes() {
     return ['rate'];
   }
