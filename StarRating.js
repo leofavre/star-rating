@@ -25,6 +25,10 @@ export class StarRating extends HTMLElement {
     this.buttons = this.shadowRoot.querySelectorAll('button');
   }
 
+  disconnectedCallback() {
+    this.shadowRoot.removeEventListener('click', this.handleClick);
+  }
+
   handleClick(evt) {
     const clickedRate = getElementIndex(evt.target) + 1;
     this.setAttribute('rate', clickedRate);
