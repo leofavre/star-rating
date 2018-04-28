@@ -19,6 +19,17 @@ export class StarRating extends HTMLElement {
   connectedCallback() {
     const content = starRatingTemplate.content.cloneNode(true);
     this.shadowRoot.appendChild(content);
+    this.buttons = this.shadowRoot.querySelectorAll('button');
+  }
+
+  updateStars(rate) {
+    setTimeout(() => {
+      Array
+        .from(this.buttons)
+        .forEach((button, index) => {
+          button.className = (index < rate) ? 'selected' : '';
+        });
+    });
   }
 }
 
